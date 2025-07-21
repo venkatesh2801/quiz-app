@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzies</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ribeye&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+<body>
+    <header>
+        <h1 class="ribeye-regular">QUIZZIES</h1>
+    </header>
+    <section id="welcomeScreen">
+        <div class="wrapper">
+            <h1 class="ribeye-regular">Quizzies</h1>
+            <p class="nunito-sans ">Test your knowledge, discover new topics, and enjoy learning with engaging quizzes designed for everyone. Challenge yourself and have fun while you grow!</p>
+             <div class="btn-row">
+                <div class="signup-btn-stack">
+                    <button id="signup-btn">
+                        <span class="signup-btn-main nunito-sans">Sign up for free</span>
+                    </button>
+                </div>
+                <div class="signup-btn-stack">
+                    <button class="getstarted-btn">
+                        <span class="signup-btn-main nunito-sans">Get Started</span>
+                    </button>
+                 </div>
+            </div>
+            <div class="features">
+                <h1 class="nunito-sans">Why Quizzies?</h1>
+                <div class="feature-all">
+                    <div class="feature-1">
+                        <i class="fas fa-gamepad"></i>
+                        <p>Fun & Interactive</p>
+                    </div>
+                    <div class="feature-1" >
+                        <p>Learn & Grow</p>
+                    </div>
+                    <div class="feature-1">
+                        <p>Earn rewards</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+    <section id="questionScreen">
+
+    </section>
+    <section id="resultScreen">
+
+    </section>
+    <div id="authModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="loginForm">
+                <h2 class=" montserrat">Login</h2>
+                <input type="email" id="loginEmail" class=" montserrat" placeholder="Email" required>
+                <input type="password" class="montserrat" id="loginPassword" placeholder="Password" required>
+                <div class="forgot-row">
+                  <a href="" id="forgotPasswordButton" class="montserrat">Forgot Password?</a>
+                </div>
+                <button id="loginSubmit" class="modal-btn montserrat">Login</button>
+
+                <div class="switch-row">
+                  <span class="montserrat">Don't have an account?</span>
+                  <button id="showSignup" class="modal-btn-secondary montserrat" type="button">Sign up</button>
+                </div>
+            </div>
+
+            <div id="signupForm" class="hidden">
+                <h2 class=" montserrat">Sign Up</h2>
+                <input type="text" id="signupName" placeholder="Name" class=" montserrat" required>
+                <input type="email" id="signupEmail" placeholder="Email" class=" montserrat" required>
+                <input type="password" id="signupPassword" placeholder="Password" class=" montserrat" required>
+                <button id="signupSubmit" class="modal-btn montserrat">Sign Up</button>
+                <div class="switch-row">
+                  <span class="montserrat">Already have an account?</span>
+                  <button id="showLogin" class="modal-btn-secondary montserrat" type="button">Login</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+</html>
