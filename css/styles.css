@@ -313,6 +313,55 @@ header>h1{
 .modal-content button::before {
   display: none;
 }
+.howItWorks{
+  background-color: white;
+  height: 270px;
+}
+.howItWorks>h1{
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 70px;
+  color: #4B164C;
+}
+.steps{
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+
+}
+.step-number{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #7E60BF;
+  flex-shrink: 0; /* Prevent circle from shrinking */
+  margin-right: 1px;
+}
+.step{
+  max-width: 300px;
+  padding: 15px;
+  display: flex;
+  align-items: flex-start; /* Align items to top */
+  gap: 10px;
+}
+.step-content {
+  display: flex;
+  flex-direction: column;
+}
+.step-content h2 {
+    margin: 0 0 5px 0; /* Remove default margins */
+    color: #4B164C;
+}
+
+.step-content p {
+    margin: 0; /* Remove default margins */
+}
 
 
 @media (max-width: 830px) {
