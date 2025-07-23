@@ -27,3 +27,14 @@ document.getElementById("loginSubmit").addEventListener("click",function(){
 document.getElementById("signupSubmit").addEventListener("click",function(){
   document.getElementById("authModal").style.display="none";
 })
+
+document.getElementById("startLearning").addEventListener("click", function() {
+  document.getElementById("quizSelection").scrollIntoView({ behavior: "smooth" });
+}); 
+document.getElementById("howItWorks").addEventListener("click", function() {
+  document.getElementById("quizSelection").scrollIntoView({ behavior: "smooth" });
+});
+//contact us
+document.getElementById("loginSignup").addEventListener("click", function() {
+  document.getElementById("authModal").style.display = "flex";
+});
