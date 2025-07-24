@@ -512,6 +512,7 @@ footer {
   color: #4B164C;
   margin: 0;
   flex: 1;
+  cursor: pointer;
 }
 
 .footer-right-section {

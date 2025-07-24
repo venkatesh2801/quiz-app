@@ -38,3 +38,7 @@ document.getElementById("howItWorks").addEventListener("click", function() {
 document.getElementById("loginSignup").addEventListener("click", function() {
   document.getElementById("authModal").style.display = "flex";
 });
+
+document.getElementById("footer-heading").addEventListener("click",function(){
+  document.getElementById("welcomeScreen").scrollIntoView({ behavior: "smooth" });
+})
