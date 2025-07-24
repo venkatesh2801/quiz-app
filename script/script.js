@@ -5,13 +5,16 @@ document.getElementById("signup-btn").addEventListener("click",function(){
     document.getElementById("loginForm").classList.remove("hidden");
     
 });
-
-document.querySelector(".close").addEventListener("click",function(){
-
-    document.getElementById("authModal").style.display = "none";
-    
+document.getElementById("nav-heading").addEventListener("click",function(){
+  document.getElementById("welcomeScreen").scrollIntoView({ behavior: "smooth" });
 });
 
+document.querySelector(".close").addEventListener("click",function(){
+    document.getElementById("authModal").style.display = "none";
+});
+document.getElementById("signup-btn-main").addEventListener("click",function(){
+  document.getElementById("quizSelection").scrollIntoView({ behavior: "smooth" });
+});
 document.getElementById("showSignup").addEventListener("click", () => {
   document.getElementById("loginForm").classList.add("hidden");
   document.getElementById("signupForm").classList.remove("hidden");
@@ -34,7 +37,10 @@ document.getElementById("startLearning").addEventListener("click", function() {
 document.getElementById("howItWorks").addEventListener("click", function() {
   document.getElementById("quizSelection").scrollIntoView({ behavior: "smooth" });
 });
-//contact us
+
+document.getElementById("contactUs").addEventListener("click",function(){
+  document.getElementById("footer-container").scrollIntoView({ behavior: "smooth" });
+});
 document.getElementById("loginSignup").addEventListener("click", function() {
   document.getElementById("authModal").style.display = "flex";
 });
@@ -42,3 +48,4 @@ document.getElementById("loginSignup").addEventListener("click", function() {
 document.getElementById("footer-heading").addEventListener("click",function(){
   document.getElementById("welcomeScreen").scrollIntoView({ behavior: "smooth" });
 })
+

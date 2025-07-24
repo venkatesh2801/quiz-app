@@ -43,6 +43,7 @@ body{
 .nav-bar > h1{
   padding: 10px;
   margin-left: 50px;
+  cursor: pointer;
 }
 .nav-bar{
   display: flex;
