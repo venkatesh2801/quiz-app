@@ -1,0 +1,715 @@
+
+{
+    "math": [
+      {
+        "question": "What is the solution to the equation 3x² - 5x - 2 = 0?",
+        "options": ["x = -1/3, x = 2", "x = 1/3, x = -2", "x = -2, x = 3", "x = 2, x = 3"],
+        "answer": 0,
+        "explanation": "Factor or use the quadratic formula: (3x + 1)(x - 2) = 0 → x = -1/3 or x = 2."
+      },
+      {
+        "question": "If log₅(x) = 3, what is the value of x?",
+        "options": ["15", "125", "243", "25"],
+        "answer": 1,
+        "explanation": "log₅(x) = 3 → x = 5³ = 125."
+      },
+      {
+        "question": "What is the slope of the line perpendicular to y = 2x + 5?",
+        "options": ["2", "-2", "1/2", "-1/2"],
+        "answer": 3,
+        "explanation": "Perpendicular slopes are negative reciprocals. Original slope = 2 → Perpendicular slope = -1/2."
+      },
+      {
+        "question": "What is the sum of the interior angles of a hexagon?",
+        "options": ["540°", "720°", "900°", "1080°"],
+        "answer": 1,
+        "explanation": "Sum = (n-2) × 180° = (6-2) × 180° = 720°."
+      },
+      {
+        "question": "If sinθ = 0.6, what is cosθ if θ is in the first quadrant?",
+        "options": ["0.4", "0.8", "0.36", "0.64"],
+        "answer": 1,
+        "explanation": "Use sin²θ + cos²θ = 1 → cosθ = √(1 - 0.36) = 0.8."
+      },
+      {
+        "question": "What is the derivative of f(x) = 3x⁴ - 2x² + 5?",
+        "options": ["12x³ - 4x", "6x³ - 2x", "3x³ - 2x + 5", "12x⁴ - 4x²"],
+        "answer": 0,
+        "explanation": "Apply the power rule: d/dx [3x⁴] = 12x³, d/dx [-2x²] = -4x, d/dx [5] = 0."
+      },
+      {
+        "question": "What is the probability of rolling two dice and getting a sum of 7?",
+        "options": ["1/6", "1/12", "1/36", "1/9"],
+        "answer": 0,
+        "explanation": "There are 6 combinations that sum to 7 out of 36 possible outcomes → 6/36 = 1/6."
+      },
+      {
+        "question": "Solve for x: 2^(x+1) = 16",
+        "options": ["2", "3", "4", "5"],
+        "answer": 1,
+        "explanation": "16 = 2⁴ → x + 1 = 4 → x = 3."
+      },
+      {
+        "question": "What is the area of a circle with circumference 10π?",
+        "options": ["10π", "25π", "50π", "100π"],
+        "answer": 1,
+        "explanation": "C = 2πr = 10π → r = 5 → A = πr² = 25π."
+      },
+      {
+        "question": "If f(x) = x² + 3x - 4, what is f(-2)?",
+        "options": ["-6", "-2", "2", "6"],
+        "answer": 0,
+        "explanation": "f(-2) = (-2)² + 3(-2) - 4 = 4 - 6 - 4 = -6."
+      },
+      {
+        "question": "What is the midpoint of the line segment joining (1, 3) and (5, 9)?",
+        "options": ["(3, 6)", "(2, 4.5)", "(4, 6)", "(6, 12)"],
+        "answer": 0,
+        "explanation": "Midpoint formula: ((1+5)/2, (3+9)/2) = (3, 6)."
+      },
+      {
+        "question": "What is the value of Σ (from k=1 to 4) (2k + 1)?",
+        "options": ["15", "20", "24", "30"],
+        "answer": 2,
+        "explanation": "Sum = (3) + (5) + (7) + (9) = 24."
+      },
+      {
+        "question": "Which of these is a factor of x³ - 8?",
+        "options": ["x - 2", "x + 2", "x² - 4", "x² + 2x + 4"],
+        "answer": 0,
+        "explanation": "Difference of cubes: x³ - 8 = (x - 2)(x² + 2x + 4)."
+      },
+      {
+        "question": "What is the solution to |2x - 3| = 7?",
+        "options": ["x = 5", "x = -2", "x = 5 or x = -2", "x = 2 or x = -5"],
+        "answer": 2,
+        "explanation": "2x - 3 = 7 → x = 5; 2x - 3 = -7 → x = -2."
+      },
+      {
+        "question": "What is the simplified form of (2 + √3)(2 - √3)?",
+        "options": ["1", "4 - 3", "4 - 2√3", "4 + 2√3"],
+        "answer": 1,
+        "explanation": "Difference of squares: (2)² - (√3)² = 4 - 3 = 1."
+      },
+      {
+        "question": "If a right triangle has legs 6 and 8, what is the hypotenuse?",
+        "options": ["10", "12", "14", "15"],
+        "answer": 0,
+        "explanation": "Pythagorean theorem: √(6² + 8²) = √100 = 10."
+      },
+      {
+        "question": "What is the domain of f(x) = √(4 - x²)?",
+        "options": ["x ≤ 2", "-2 ≤ x ≤ 2", "x ≥ -2", "All real numbers"],
+        "answer": 1,
+        "explanation": "4 - x² ≥ 0 → x² ≤ 4 → -2 ≤ x ≤ 2."
+      },
+      {
+        "question": "What is the 5th term of the arithmetic sequence 3, 7, 11, ...?",
+        "options": ["15", "19", "23", "27"],
+        "answer": 1,
+        "explanation": "Common difference = 4 → 3, 7, 11, 15, 19."
+      },
+      {
+        "question": "What is the vertex of the parabola y = x² - 4x + 3?",
+        "options": ["(2, -1)", "(1, 0)", "(4, 3)", "(-2, 15)"],
+        "answer": 0,
+        "explanation": "Complete the square: y = (x² - 4x + 4) - 1 → y = (x-2)² -1 → Vertex at (2, -1)."
+      },
+      {
+        "question": "If tanθ = 3/4, what is sinθ in the first quadrant?",
+        "options": ["3/5", "4/5", "5/3", "5/4"],
+        "answer": 0,
+        "explanation": "tanθ = opposite/adjacent = 3/4 → hypotenuse = 5 → sinθ = 3/5."
+      }
+    ],
+    "science": [
+      {
+        "question": "What is the SI unit of electric charge?",
+        "options": ["Volt", "Ampere", "Coulomb", "Ohm"],
+        "answer": 2,
+        "explanation": "The coulomb (C) is the SI unit of electric charge, named after Charles-Augustin de Coulomb."
+      },
+      {
+        "question": "Which of these is NOT a noble gas?",
+        "options": ["Helium", "Neon", "Chlorine", "Argon"],
+        "answer": 2,
+        "explanation": "Chlorine (Cl) is a halogen, not a noble gas. Noble gases are in Group 18 of the periodic table."
+      },
+      {
+        "question": "What type of bond involves the sharing of electron pairs between atoms?",
+        "options": ["Ionic", "Covalent", "Metallic", "Hydrogen"],
+        "answer": 1,
+        "explanation": "Covalent bonds form when atoms share electrons, common in molecules like H₂O and O₂."
+      },
+      {
+        "question": "Which law states that pressure and volume are inversely proportional at constant temperature?",
+        "options": ["Boyle's Law", "Charles's Law", "Avogadro's Law", "Gay-Lussac's Law"],
+        "answer": 0,
+        "explanation": "Boyle's Law: P₁V₁ = P₂V₂ (for a fixed amount of gas at constant temperature)."
+      },
+      {
+        "question": "What is the pH of a neutral solution at 25°C?",
+        "options": ["0", "7", "10", "14"],
+        "answer": 1,
+        "explanation": "A pH of 7 is neutral (e.g., pure water). Below 7 is acidic; above 7 is basic."
+      },
+      {
+        "question": "Which organelle is responsible for cellular respiration?",
+        "options": ["Nucleus", "Mitochondrion", "Ribosome", "Golgi Apparatus"],
+        "answer": 1,
+        "explanation": "Mitochondria produce ATP through aerobic respiration (the 'powerhouse of the cell')."
+      },
+      {
+        "question": "What is the acceleration due to gravity on Earth (approx.)?",
+        "options": ["6.67 m/s²", "9.81 m/s²", "10.2 m/s²", "12.0 m/s²"],
+        "answer": 1,
+        "explanation": "g ≈ 9.81 m/s², though it varies slightly with altitude and latitude."
+      },
+      {
+        "question": "Which blood type is the universal donor?",
+        "options": ["A", "B", "AB", "O"],
+        "answer": 3,
+        "explanation": "Type O-negative blood lacks A/B antigens and Rh factor, making it safe for most recipients."
+      },
+      {
+        "question": "What is the chemical formula for sulfuric acid?",
+        "options": ["HCl", "H₂SO₄", "HNO₃", "H₃PO₄"],
+        "answer": 1,
+        "explanation": "Sulfuric acid is H₂SO₄, a strong acid used in batteries and industrial processes."
+      },
+      {
+        "question": "Which layer of the Earth is primarily composed of iron and nickel?",
+        "options": ["Crust", "Mantle", "Outer Core", "Inner Core"],
+        "answer": 2,
+        "explanation": "The outer core is liquid iron/nickel, while the inner core is solid due to higher pressure."
+      },
+      {
+        "question": "What is the process by which plants lose water vapor through leaves?",
+        "options": ["Photosynthesis", "Transpiration", "Respiration", "Osmosis"],
+        "answer": 1,
+        "explanation": "Transpiration helps pull water upward from roots and cools the plant."
+      },
+      {
+        "question": "Which of Newton's Laws states 'F = ma'?",
+        "options": ["First Law", "Second Law", "Third Law", "Law of Gravitation"],
+        "answer": 1,
+        "explanation": "Newton’s Second Law: Force = mass × acceleration."
+      },
+      {
+        "question": "What is the main greenhouse gas responsible for trapping heat in Earth's atmosphere?",
+        "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Methane"],
+        "answer": 2,
+        "explanation": "CO₂ is the primary greenhouse gas, though methane (CH₄) is more potent but less abundant."
+      },
+      {
+        "question": "Which subatomic particle has a negative charge?",
+        "options": ["Proton", "Neutron", "Electron", "Positron"],
+        "answer": 2,
+        "explanation": "Electrons orbit the nucleus and carry a negative charge (-1.6 × 10⁻¹⁹ C)."
+      },
+      {
+        "question": "In genetics, what does 'DNA' stand for?",
+        "options": ["Deoxyribonucleic Acid", "Dinucleic Acid", "Dimeric Nucleotide Acid", "Double Nitrogenous Acid"],
+        "answer": 0,
+        "explanation": "DNA = Deoxyribonucleic Acid, the molecule carrying genetic instructions."
+      },
+      {
+        "question": "What type of rock is formed from cooled magma or lava?",
+        "options": ["Sedimentary", "Metamorphic", "Igneous", "Basalt"],
+        "answer": 2,
+        "explanation": "Igneous rocks (e.g., granite, basalt) form from solidified molten material."
+      },
+      {
+        "question": "Which planet has the Great Red Spot?",
+        "options": ["Mars", "Jupiter", "Saturn", "Venus"],
+        "answer": 1,
+        "explanation": "Jupiter’s Great Red Spot is a giant storm larger than Earth, raging for centuries."
+      },
+      {
+        "question": "What is the smallest unit of life?",
+        "options": ["Atom", "Cell", "Molecule", "Tissue"],
+        "answer": 1,
+        "explanation": "Cells are the basic structural and functional units of all living organisms."
+      },
+      {
+        "question": "Which process converts light energy into chemical energy in plants?",
+        "options": ["Respiration", "Fermentation", "Photosynthesis", "Chemosynthesis"],
+        "answer": 2,
+        "explanation": "Photosynthesis: 6CO₂ + 6H₂O + light → C₆H₁₂O₆ (glucose) + 6O₂."
+      },
+      {
+        "question": "What is the atomic number of carbon?",
+        "options": ["6", "12", "14", "16"],
+        "answer": 0,
+        "explanation": "Carbon has 6 protons, defining its atomic number (and its place in the periodic table)."
+      }
+    ],
+    "social_studies": [
+        {
+        "question": "Which document outlined the first form of government for the United States before the Constitution?",
+        "options": ["Declaration of Independence", "Articles of Confederation", "Federalist Papers", "Mayflower Compact"],
+        "answer": 1,
+        "explanation": "The Articles of Confederation (1781–1789) was the first U.S. constitution, but it created a weak central government."
+        },
+        {
+        "question": "What is the primary function of the World Bank?",
+        "options": ["Military peacekeeping", "Providing loans to developing countries", "Regulating global trade", "Enforcing international law"],
+        "answer": 1,
+        "explanation": "The World Bank provides financial and technical aid to reduce poverty and support development projects."
+        },
+        {
+        "question": "Which ancient civilization built the Machu Picchu complex?",
+        "options": ["Aztec", "Maya", "Inca", "Olmec"],
+        "answer": 2,
+        "explanation": "The Inca built Machu Picchu in the 15th century as a royal estate in the Andes Mountains."
+        },
+        {
+        "question": "What is the term for a government system where power is divided between a central authority and regional units?",
+        "options": ["Unitary", "Federal", "Confederal", "Autocratic"],
+        "answer": 1,
+        "explanation": "Federal systems (e.g., U.S., Germany) share power between national and state/local governments."
+        },
+        {
+        "question": "Which event sparked World War I in 1914?",
+        "options": ["Invasion of Poland", "Assassination of Archduke Franz Ferdinand", "Bombing of Pearl Harbor", "Signing of the Treaty of Versailles"],
+        "answer": 1,
+        "explanation": "The assassination of Austria-Hungary's heir by a Serbian nationalist triggered a chain of alliances leading to war."
+        },
+        {
+        "question": "What is the main purpose of the United Nations Security Council?",
+        "options": ["Promoting global health", "Maintaining international peace and security", "Regulating climate change", "Managing economic sanctions"],
+        "answer": 1,
+        "explanation": "The Security Council addresses threats to peace, with the power to authorize sanctions or military action."
+        },
+        {
+        "question": "Which river is considered the cradle of ancient Egyptian civilization?",
+        "options": ["Tigris", "Euphrates", "Nile", "Indus"],
+        "answer": 2,
+        "explanation": "The Nile's predictable flooding allowed agriculture to flourish in Egypt."
+        },
+        {
+        "question": "What economic system relies on supply and demand to set prices?",
+        "options": ["Command economy", "Traditional economy", "Market economy", "Mixed economy"],
+        "answer": 2,
+        "explanation": "In a market economy, prices are determined by competition and consumer choices."
+        },
+        {
+        "question": "Who wrote 'The Communist Manifesto' in 1848?",
+        "options": ["Adam Smith", "Karl Marx", "John Maynard Keynes", "Vladimir Lenin"],
+        "answer": 1,
+        "explanation": "Karl Marx and Friedrich Engels critiqued capitalism and proposed a classless society."
+        },
+        {
+        "question": "Which U.S. Supreme Court case established judicial review?",
+        "options": ["Brown v. Board of Education", "Marbury v. Madison", "Roe v. Wade", "Plessy v. Ferguson"],
+        "answer": 1,
+        "explanation": "Marbury v. Madison (1803) let the Court overturn laws unconstitutional under the Constitution."
+        },
+        {
+        "question": "What was the primary cause of the Cold War?",
+        "options": ["Religious conflict", "Economic inequality", "Ideological rivalry (Capitalism vs. Communism)", "Territorial disputes in Africa"],
+        "answer": 2,
+        "explanation": "The U.S. and USSR clashed over democracy/capitalism versus communism/sphere of influence."
+        },
+        {
+        "question": "Which country colonized Brazil until 1822?",
+        "options": ["Spain", "Portugal", "France", "Netherlands"],
+        "answer": 1,
+        "explanation": "Portugal claimed Brazil in 1500 and ruled until independence under Dom Pedro I."
+        },
+        {
+        "question": "What is the term for the blending of cultures due to prolonged contact?",
+        "options": ["Assimilation", "Acculturation", "Globalization", "Colonialism"],
+        "answer": 1,
+        "explanation": "Acculturation occurs when groups adopt elements of each other’s cultures (e.g., food, language)."
+        },
+        {
+        "question": "Which revolution began with the storming of the Bastille in 1789?",
+        "options": ["American Revolution", "French Revolution", "Industrial Revolution", "Russian Revolution"],
+        "answer": 1,
+        "explanation": "The French Revolution overthrew the monarchy, inspired by Enlightenment ideals like liberty and equality."
+        },
+        {
+        "question": "What is the largest religion by followers worldwide?",
+        "options": ["Christianity", "Islam", "Hinduism", "Buddhism"],
+        "answer": 0,
+        "explanation": "Christianity has ~2.4 billion followers, followed by Islam (~1.9 billion)."
+        },
+        {
+        "question": "Which African country was never colonized by Europe?",
+        "options": ["Ethiopia", "South Africa", "Nigeria", "Kenya"],
+        "answer": 0,
+        "explanation": "Ethiopia resisted Italian colonization (except for a brief occupation in 1936–1941)."
+        },
+        {
+        "question": "What is the main role of the International Monetary Fund (IMF)?",
+        "options": ["Provide military aid", "Stabilize global currencies and offer financial assistance", "Promote cultural exchange", "Regulate internet governance"],
+        "answer": 1,
+        "explanation": "The IMF assists countries with balance-of-payments crises and promotes monetary cooperation."
+        },
+        {
+        "question": "Which U.S. amendment guarantees freedom of speech?",
+        "options": ["First Amendment", "Second Amendment", "Fifth Amendment", "Tenth Amendment"],
+        "answer": 0,
+        "explanation": "The First Amendment protects speech, religion, press, assembly, and petition."
+        },
+        {
+        "question": "What was the Silk Road?",
+        "options": ["A trade route connecting Asia and Europe", "A medieval European military campaign", "A canal system in China", "An ancient African kingdom"],
+        "answer": 0,
+        "explanation": "The Silk Road (2nd century BCE–14th century CE) facilitated trade of goods, ideas, and culture."
+        },
+        {
+        "question": "Which ideology advocates for minimal government intervention in the economy?",
+        "options": ["Socialism", "Communism", "Libertarianism", "Fascism"],
+        "answer": 2,
+        "explanation": "Libertarians emphasize individual liberty, free markets, and limited government."
+        }
+    ],
+    "reading": [
+    {
+      "question": "In the phrase 'the relentless march of time,' what does 'relentless' most likely mean?",
+      "options": ["Kind", "Unstoppable", "Slow", "Invisible"],
+      "answer": 1,
+      "explanation": "'Relentless' suggests something that continues without stopping or weakening—time cannot be paused."
+    },
+    {
+      "question": "If a story is written in first-person point of view, what pronoun would you expect to see?",
+      "options": ["He/She", "They", "I", "You"],
+      "answer": 2,
+      "explanation": "First-person narration uses 'I' because the narrator is a character in the story."
+    },
+    {
+      "question": "What is the main purpose of a persuasive essay?",
+      "options": ["To entertain", "To inform", "To convince", "To describe"],
+      "answer": 2,
+      "explanation": "Persuasive writing aims to convince the reader of a particular viewpoint or argument."
+    },
+    {
+      "question": "Which literary device is used in the sentence: 'The stars danced playfully in the moonlit sky'?",
+      "options": ["Simile", "Metaphor", "Personification", "Alliteration"],
+      "answer": 2,
+      "explanation": "Personification gives human traits (dancing) to non-human things (stars)."
+    },
+    {
+      "question": "What does the word 'benevolent' mean in this sentence: 'The benevolent stranger paid for our meal'?",
+      "options": ["Wealthy", "Generous/Kind", "Suspicious", "Strange"],
+      "answer": 1,
+      "explanation": "'Benevolent' describes someone who is well-meaning and kind."
+    },
+    {
+      "question": "Which of these is a theme, not a topic?",
+      "options": ["Love", "Friendship", "Loyalty triumphs over betrayal", "War"],
+      "answer": 2,
+      "explanation": "A theme is a universal message (e.g., 'loyalty beats betrayal'), while topics are broad subjects (e.g., 'war')."
+    },
+    {
+      "question": "What is the tone of this line: 'The wind howled through the barren trees, and the air smelled of decay'?",
+      "options": ["Joyful", "Mysterious", "Gloomy", "Humorous"],
+      "answer": 2,
+      "explanation": "Words like 'howled,' 'barren,' and 'decay' create a dark, gloomy tone."
+    },
+    {
+      "question": "In a story, the 'rising action' refers to:",
+      "options": ["The introduction of characters", "The series of events building tension", "The final resolution", "The setting description"],
+      "answer": 1,
+      "explanation": "Rising action includes conflicts and events that lead to the climax."
+    },
+    {
+      "question": "Which sentence uses 'literally' correctly?",
+      "options": ["I literally died laughing", "The book literally weighs a ton", "She literally ran as fast as a cheetah", "The sun literally rises in the east"],
+      "answer": 3,
+      "explanation": "'Literally' should describe factual truth. The sun does rise in the east (though 'rise' is figurative)."
+    },
+    {
+      "question": "What is the effect of flashbacks in a narrative?",
+      "options": ["To slow the pacing", "To reveal past events relevant to the plot", "To focus on dialogue", "To describe settings"],
+      "answer": 1,
+      "explanation": "Flashbacks provide context about characters or events from earlier times."
+    },
+    {
+      "question": "Which phrase is an example of hyperbole?",
+      "options": ["She’s as tall as a tree", "I’ve told you a million times", "The fog crept in silently", "Time is a thief"],
+      "answer": 1,
+      "explanation": "Hyperbole exaggerates for effect ('a million times' is not literal)."
+    },
+    {
+      "question": "What does 'ambiguous' mean in this context: 'The ending of the story was ambiguous, leaving readers puzzled'?",
+      "options": ["Clear", "Open to interpretation", "Boring", "Predictable"],
+      "answer": 1,
+      "explanation": "'Ambiguous' means unclear or having multiple possible meanings."
+    },
+    {
+      "question": "Which part of a story introduces the main conflict?",
+      "options": ["Exposition", "Climax", "Falling action", "Resolution"],
+      "answer": 0,
+      "explanation": "The exposition sets up characters, setting, and initial conflict."
+    },
+    {
+      "question": "What is the author’s purpose in a technical manual?",
+      "options": ["To persuade", "To entertain", "To instruct", "To express feelings"],
+      "answer": 2,
+      "explanation": "Technical manuals provide step-by-step instructions for tasks."
+    },
+    {
+      "question": "Which word best describes the mood of this line: 'The carnival lights flickered, and laughter echoed through the chilly night'?",
+      "options": ["Sinister", "Festive", "Melancholic", "Suspenseful"],
+      "answer": 1,
+      "explanation": "Details like 'carnival lights' and 'laughter' suggest a festive mood."
+    },
+    {
+      "question": "What does 'foreshadowing' do in a story?",
+      "options": ["Resolves the conflict", "Hints at future events", "Describes characters", "Summarizes the plot"],
+      "answer": 1,
+      "explanation": "Foreshadowing gives subtle clues about what will happen later."
+    },
+    {
+      "question": "Which is an example of an unreliable narrator?",
+      "options": ["A detective solving a crime", "A villain hiding the truth", "A news reporter", "A historian"],
+      "answer": 1,
+      "explanation": "An unreliable narrator (often a villain or biased character) distorts or hides facts."
+    },
+    {
+      "question": "What is the main difference between 'affect' and 'effect'?",
+      "options": ["'Affect' is a noun; 'effect' is a verb", "'Affect' means to influence; 'effect' means a result", "They are interchangeable", "'Effect' is emotional; 'affect' is physical"],
+      "answer": 1,
+      "explanation": "'Affect' (verb) = to influence; 'effect' (noun) = the result."
+    },
+    {
+      "question": "Which literary genre focuses on imaginary worlds and magic?",
+      "options": ["Realism", "Historical fiction", "Fantasy", "Biography"],
+      "answer": 2,
+      "explanation": "Fantasy includes supernatural elements (e.g., dragons, wizards)."
+    },
+    {
+      "question": "What does 'irony' mean in literature?",
+      "options": ["A funny coincidence", "A contrast between expectation and reality", "A rhyming pattern", "A descriptive metaphor"],
+      "answer": 1,
+      "explanation": "Irony highlights differences between what’s expected and what actually occurs."
+    }
+  ],
+  "writing": [
+      {
+        "question": "Which sentence demonstrates correct comma usage?",
+        "options": [
+          "After we ate we went to the movies.",
+          "After we ate, we went to the movies.",
+          "After, we ate we went to the movies.",
+          "After we ate we went, to the movies."
+        ],
+        "answer": 1,
+        "explanation": "A comma is needed after an introductory clause ('After we ate')."
+      },
+      {
+        "question": "What is the best way to combine these sentences: 'The dog barked. The mailman arrived.'",
+        "options": [
+          "The dog barked the mailman arrived.",
+          "The dog barked, the mailman arrived.",
+          "The dog barked when the mailman arrived.",
+          "The dog barked; and the mailman arrived."
+        ],
+        "answer": 2,
+        "explanation": "Using 'when' shows the relationship between the two events clearly."
+      },
+      {
+        "question": "Which sentence is written in active voice?",
+        "options": [
+          "The ball was thrown by the boy.",
+          "The report was filed by the manager.",
+          "The chef prepared a delicious meal.",
+          "The song was sung beautifully."
+        ],
+        "answer": 2,
+        "explanation": "Active voice has the subject performing the action ('The chef prepared')."
+      },
+      {
+        "question": "What is the purpose of a thesis statement in an essay?",
+        "options": [
+          "To list all sources used",
+          "To provide a summary of the conclusion",
+          "To present the main argument or focus",
+          "To introduce the author's biography"
+        ],
+        "answer": 2,
+        "explanation": "A thesis statement clearly states the essay's central claim or purpose."
+      },
+      {
+        "question": "Which sentence avoids redundancy?",
+        "options": [
+          "She combined both ingredients together.",
+          "He repeated the same mistake again.",
+          "The final outcome was surprising.",
+          "They collaborated on the project."
+        ],
+        "answer": 3,
+        "explanation": "'Collaborated' doesn't need extra words like 'together'—it's implied."
+      },
+      {
+        "question": "What is the best way to correct this sentence: 'Me and my friend went to the store.'",
+        "options": [
+          "I and my friend went to the store.",
+          "My friend and me went to the store.",
+          "Me and my friend we went to the store.",
+          "My friend and I went to the store."
+        ],
+        "answer": 3,
+        "explanation": "Use the subjective pronoun 'I' (not 'me') as part of the subject."
+      },
+      {
+        "question": "Which sentence uses correct parallel structure?",
+        "options": [
+          "She likes hiking, swimming, and to ride bikes.",
+          "She likes hiking, swimming, and biking.",
+          "She likes to hike, swimming, and biking.",
+          "She likes to hike, to swim, and biking."
+        ],
+        "answer": 1,
+        "explanation": "All items in the list should match grammatically (-ing verbs)."
+      },
+      {
+        "question": "What is the purpose of a topic sentence in a paragraph?",
+        "options": [
+          "To provide a concluding thought",
+          "To introduce the main idea of the paragraph",
+          "To list supporting evidence",
+          "To cite sources"
+        ],
+        "answer": 1,
+        "explanation": "A topic sentence states the paragraph's central idea, which the rest supports."
+      },
+      {
+        "question": "Which sentence correctly uses a semicolon?",
+        "options": [
+          "I love pizza; and pasta.",
+          "The sky is blue; the grass is green.",
+          "She went to the store; to buy milk.",
+          "Although it was raining; we went outside."
+        ],
+        "answer": 1,
+        "explanation": "Semicolons join two independent clauses without a conjunction."
+      },
+      {
+        "question": "What is the best revision for this sentence: 'The reason why is because he was tired.'",
+        "options": [
+          "The reason is because he was tired.",
+          "The reason why is that he was tired.",
+          "He was tired.",
+          "The reason is that he was tired."
+        ],
+        "answer": 3,
+        "explanation": "'The reason is because' is redundant. 'The reason is that' is concise."
+      },
+      {
+        "question": "Which sentence demonstrates correct apostrophe use?",
+        "options": [
+          "The dogs bowl is empty.",
+          "The dog's bowl is empty.",
+          "The dogs' bowl is empty.",
+          "The dogs's bowl is empty."
+        ],
+        "answer": 1,
+        "explanation": "Use 'dog's' for singular possessive (one dog owning the bowl)."
+      },
+      {
+        "question": "What is the best way to vary sentence structure in writing?",
+        "options": [
+          "Use only short sentences",
+          "Mix simple, compound, and complex sentences",
+          "Avoid using commas",
+          "Repeat the same sentence pattern"
+        ],
+        "answer": 1,
+        "explanation": "Varied sentence structures improve flow and reader engagement."
+      },
+      {
+        "question": "Which sentence avoids clichés?",
+        "options": [
+          "He was as brave as a lion.",
+          "She worked around the clock.",
+          "The solution was outside the box.",
+          "The child’s curiosity was boundless."
+        ],
+        "answer": 3,
+        "explanation": "'Boundless curiosity' is fresh, while others are overused phrases."
+      },
+      {
+        "question": "What is the best way to introduce a counterargument in an essay?",
+        "options": [
+          "Ignore opposing views",
+          "State it weakly to dismiss it easily",
+          "Present it fairly before refuting it",
+          "Use emotional language to criticize it"
+        ],
+        "answer": 2,
+        "explanation": "A strong essay acknowledges opposing views before rebutting them logically."
+      },
+      {
+        "question": "Which sentence is punctuated correctly?",
+        "options": [
+          "\"What time is it?\" she asked.",
+          "\"What time is it\" she asked?",
+          "\"What time is it? she asked.\"",
+          "\"What time is it she asked?\""
+        ],
+        "answer": 0,
+        "explanation": "The question mark goes inside the quotes, and the dialogue tag is lowercase."
+      },
+      {
+        "question": "What is the best revision for this sentence: 'Due to the fact that it was raining, we stayed home.'",
+        "options": [
+          "Because it was raining, we stayed home.",
+          "Due to it was raining, we stayed home.",
+          "We stayed home due to the rain.",
+          "It was raining, so we stayed home."
+        ],
+        "answer": 0,
+        "explanation": "'Because' is more concise than 'due to the fact that.'"
+      },
+      {
+        "question": "Which sentence uses 'their/there/they're' correctly?",
+        "options": [
+          "Their going to the park later.",
+          "There house is on the corner.",
+          "They're planning to visit soon.",
+          "The books are over their."
+        ],
+        "answer": 2,
+        "explanation": "'They're' is the contraction for 'they are.'"
+      },
+      {
+        "question": "What is the best way to conclude an argumentative essay?",
+        "options": [
+          "Introduce new evidence",
+          "Restate the thesis and summarize key points",
+          "Repeat the introduction word-for-word",
+          "End with a humorous anecdote"
+        ],
+        "answer": 1,
+        "explanation": "A strong conclusion reinforces the thesis and main arguments."
+      },
+      {
+        "question": "Which sentence avoids wordiness?",
+        "options": [
+          "At this point in time, we are not prepared.",
+          "Currently, we are not prepared.",
+          "In the not-too-distant future, we will be ready.",
+          "Due to the fact that we are busy, we cannot help."
+        ],
+        "answer": 1,
+        "explanation": "'Currently' is more concise than 'at this point in time.'"
+      },
+      {
+        "question": "What is the primary purpose of peer review in writing?",
+        "options": [
+          "To catch grammar errors only",
+          "To provide constructive feedback for improvement",
+          "To rewrite the entire piece",
+          "To praise the writer unconditionally"
+        ],
+        "answer": 1,
+        "explanation": "Peer review helps identify strengths and areas for revision."
+      }
+    ]
+  
+    
+}
