@@ -35,7 +35,7 @@ document.getElementById("startLearning").addEventListener("click", function() {
   document.getElementById("quizSelection").scrollIntoView({ behavior: "smooth" });
 }); 
 document.getElementById("howItWorks").addEventListener("click", function() {
-  document.getElementById("quizSelection").scrollIntoView({ behavior: "smooth" });
+  document.getElementById("how-it-works").scrollIntoView({ behavior: "smooth" });
 });
 
 document.getElementById("contactUs").addEventListener("click",function(){
@@ -49,3 +49,31 @@ document.getElementById("footer-heading").addEventListener("click",function(){
   document.getElementById("welcomeScreen").scrollIntoView({ behavior: "smooth" });
 })
 
+let currentQuestionIndex =0;
+let score =0;
+let timer;
+let timeLeft = 30;
+let selectedTopic = '';
+let questions = [];
+
+
+const questionScreen = document.getElementById('questionScreen');
+const questionText = document.getElementById('questionText');
+const optionsContainer = document.getElementById('optionsContainer');
+const nextBtn = document.getElementById('nextBtn');
+const progressText = document.getElementById('progress');
+const timerText = document.getElementById('timer');
+
+//1.load questions when topic is selected
+
+document.querySelectorAll('.image-card').forEach(card =>{
+  card.addEventListener('click',async() => {
+    selectedTopic = card.dataset.topic;
+
+    const response = await fetch('./questions.json');
+    const data = await resoponse.json();
+    questions = data[selectedTopic];
+
+    startQuiz();
+  });
+});
