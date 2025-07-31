@@ -73,207 +73,264 @@ const resultScreen = document.getElementById('resultScreen');
 
 // Quiz topic selection
 document.querySelectorAll('.image-card').forEach(card => {
-card.addEventListener('click', async() => {
-  try {
-    selectedTopic = card.dataset.topic;
-    const response = await fetch('./questions.json');
+  card.addEventListener('click', async() => {
+      try {
+          selectedTopic = card.dataset.topic;
+          const response = await fetch('./questions.json');
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          questions = data[selectedTopic] || [];
+          if (questions.length === 0) {
+              throw new Error(`No questions found for topic: ${selectedTopic}`);
+          }
+          resetQuiz(); // Reset quiz state before starting
+          startQuiz();
+      } catch (error) {
+          console.error("Quiz loading error:", error);
+          alert(`Failed to load the ${selectedTopic} quiz. Please check if the questions.json file is available and try again.`);
+      }
+  });
+});
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+// Home button functionality - NEW ADDITION
+function addHomeButton() {
+  const homeBtn = document.getElementById('homeBtn');
+  if (homeBtn) {
+      homeBtn.addEventListener('click', () => {
+          // Clear any running timers
+          clearInterval(timer);
 
-    const data = await response.json();
-    questions = data[selectedTopic] || [];
+          // Hide quiz screen and show home screen
+          questionScreen.classList.add('hidden');
+          resultScreen.classList.add('hidden');
+          document.getElementById('quizSelection').classList.remove('hidden');
 
-    if (questions.length === 0) {
-      throw new Error(`No questions found for topic: ${selectedTopic}`);
-    }
-
-    resetQuiz(); // Reset quiz state before starting
-    startQuiz();
-
-  } catch (error) {
-    console.error("Quiz loading error:", error);
-    alert(`Failed to load the ${selectedTopic} quiz. Please check if the questions.json file is available and try again.`);
+          // Reset quiz state for next attempt
+          resetQuiz();
+      });
   }
-});
-});
+}
 
 // Quiz control functions
 function resetQuiz() {
-currentQuestionIndex = 0;
-score = 0;
-clearInterval(timer);
-timeLeft = 30;
+  currentQuestionIndex = 0;
+  score = 0;
+  clearInterval(timer);
+  timeLeft = 30;
 }
 
 function startQuiz() {
-// Hide other screens and show question screen
-document.getElementById('quizSelection').classList.add('hidden');
-resultScreen.classList.add('hidden');
-questionScreen.classList.remove('hidden');
-
-showQuestion();
+  // Hide other screens and show question screen
+  document.getElementById('quizSelection').classList.add('hidden');
+  resultScreen.classList.add('hidden');
+  questionScreen.classList.remove('hidden');
+  showQuestion();
 }
 
 function showQuestion() {
-clearInterval(timer);
-timeLeft = 30;
-nextBtn.disabled = true;
+  clearInterval(timer);
+  timeLeft = 30;
+  nextBtn.disabled = true;
 
-// Reset button styles
-document.querySelectorAll('.option-btn').forEach(btn => {
-  btn.style.borderColor = '';
-  btn.disabled = false;
-  btn.classList.remove('selected');
-});
+  // Update button text based on question position - NEW IMPROVEMENT
+  const isLastQuestion = currentQuestionIndex === questions.length - 1;
+  nextBtn.textContent = isLastQuestion ? 'Show Results' : 'Next Question';
 
-const currentQuestion = questions[currentQuestionIndex];
-questionText.textContent = currentQuestion.question;
-progressText.textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
+  // Reset button styles
+  document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.style.borderColor = '';
+      btn.style.backgroundColor = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      btn.classList.remove('selected');
+  });
 
-// Clear and populate options
-optionsContainer.innerHTML = '';
-currentQuestion.options.forEach((option, index) => {
-  const li = document.createElement('li');
-  const button = document.createElement('button');
-  button.textContent = option;
-  button.classList.add('option-btn');
-  button.dataset.index = index;
-  li.appendChild(button);
-  optionsContainer.appendChild(li);
+  const currentQuestion = questions[currentQuestionIndex];
+  questionText.textContent = currentQuestion.question;
+  progressText.textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
 
-  button.addEventListener('click', selectAnswer);
-});
+  // Clear and populate options
+  optionsContainer.innerHTML = '';
+  currentQuestion.options.forEach((option, index) => {
+      const li = document.createElement('li');
+      const button = document.createElement('button');
+      button.textContent = option;
+      button.classList.add('option-btn');
+      button.dataset.index = index;
+      li.appendChild(button);
+      optionsContainer.appendChild(li);
+      button.addEventListener('click', selectAnswer);
+  });
 
-startTimer();
+  startTimer();
 }
 
 function startTimer() {
-timerText.textContent = `${timeLeft}s`;
-timer = setInterval(() => {
-  timeLeft--;
   timerText.textContent = `${timeLeft}s`;
-
-  if (timeLeft <= 0) {
-    clearInterval(timer);
-    handleTimeout();
-  }
-}, 1000);
+  timer = setInterval(() => {
+      timeLeft--;
+      timerText.textContent = `${timeLeft}s`;
+      if (timeLeft <= 0) {
+          clearInterval(timer);
+          handleTimeout();
+      }
+  }, 1000);
 }
 
 function selectAnswer(e) {
-clearInterval(timer);
-const selectedButton = e.target;
-const selectedIndex = parseInt(selectedButton.dataset.index);
-const currentQuestion = questions[currentQuestionIndex];
+  clearInterval(timer);
+  const selectedButton = e.target;
+  const selectedIndex = parseInt(selectedButton.dataset.index);
+  const currentQuestion = questions[currentQuestionIndex];
 
-// Disable all buttons to prevent multiple selections
-document.querySelectorAll('.option-btn').forEach(btn => {
-  btn.disabled = true;
-  btn.classList.remove('selected');
-});
+  // Disable all buttons to prevent multiple selections
+  document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.disabled = true;
+      btn.classList.remove('selected');
+  });
 
-selectedButton.classList.add('selected');
-nextBtn.disabled = false;
+  selectedButton.classList.add('selected');
+  nextBtn.disabled = false;
 
-// Check if answer is correct and provide visual feedback
-if (selectedIndex === currentQuestion.answer) {
-  score++;
-  selectedButton.style.borderColor = '#4CAF50'; // Green for correct
-  selectedButton.style.backgroundColor = '#E8F5E8'; // Light green background
-} else {
-  selectedButton.style.borderColor = '#F44336'; // Red for wrong
-  selectedButton.style.backgroundColor = '#FFEBEE'; // Light red background
+  // Check if answer is correct and provide visual feedback - IMPROVED VISIBILITY
+  if (selectedIndex === currentQuestion.answer) {
+      score++;
+      selectedButton.style.borderColor = '#4CAF50'; // Green for correct
+      selectedButton.style.backgroundColor = '#E8F5E8'; // Light green background
+      selectedButton.style.color = '#2E7D32'; // Dark green text for better visibility
+  } else {
+      selectedButton.style.borderColor = '#F44336'; // Red for wrong
+      selectedButton.style.backgroundColor = '#FFEBEE'; // Light red background
+      selectedButton.style.color = '#C62828'; // Dark red text for better visibility - FIXED VISIBILITY ISSUE
 
-  // Highlight correct answer
-  const correctButton = document.querySelector(`.option-btn[data-index="${currentQuestion.answer}"]`);
-  correctButton.style.borderColor = '#4CAF50';
-  correctButton.style.backgroundColor = '#E8F5E8';
-}
+      // Highlight correct answer
+      const correctButton = document.querySelector(`.option-btn[data-index="${currentQuestion.answer}"]`);
+      correctButton.style.borderColor = '#4CAF50';
+      correctButton.style.backgroundColor = '#E8F5E8';
+      correctButton.style.color = '#2E7D32';
+  }
 
-// Show explanation if available
-if (currentQuestion.explanation) {
-  setTimeout(() => {
-    // You could add an explanation display here if desired
-  }, 1000);
-}
+  // Show explanation if available
+  if (currentQuestion.explanation) {
+      setTimeout(() => {
+          // You could add an explanation display here if desired
+      }, 1000);
+  }
 }
 
 function handleTimeout() {
-const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = questions[currentQuestionIndex];
 
-// Disable all buttons and show correct answer
-document.querySelectorAll('.option-btn').forEach(btn => {
-  btn.disabled = true;
-});
+  // Disable all buttons and show correct answer
+  document.querySelectorAll('.option-btn').forEach(btn => {
+      btn.disabled = true;
+  });
 
-// Highlight correct answer in green
-const correctButton = document.querySelector(`.option-btn[data-index="${currentQuestion.answer}"]`);
-correctButton.style.borderColor = '#4CAF50';
-correctButton.style.backgroundColor = '#E8F5E8';
+  // Highlight correct answer in green
+  const correctButton = document.querySelector(`.option-btn[data-index="${currentQuestion.answer}"]`);
+  correctButton.style.borderColor = '#4CAF50';
+  correctButton.style.backgroundColor = '#E8F5E8';
+  correctButton.style.color = '#2E7D32';
 
-nextBtn.disabled = false;
+  // Update button text for last question
+  const isLastQuestion = currentQuestionIndex === questions.length - 1;
+  nextBtn.textContent = isLastQuestion ? 'Show Results' : 'Next Question';
 
-// You could show a timeout message here
-console.log("Time's up! The correct answer was:", currentQuestion.options[currentQuestion.answer]);
+  nextBtn.disabled = false;
+
+  // You could show a timeout message here
+  console.log("Time's up! The correct answer was:", currentQuestion.options[currentQuestion.answer]);
 }
 
 // Next button click handler
 nextBtn.addEventListener('click', () => {
-currentQuestionIndex++;
-
-if (currentQuestionIndex < questions.length) {
-  showQuestion();
-} else {
-  showResults();
-}
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+      showQuestion();
+  } else {
+      showResults();
+  }
 });
 
 function showResults() {
-questionScreen.classList.add('hidden');
-resultScreen.classList.remove('hidden');
+  questionScreen.classList.add('hidden');
+  resultScreen.classList.remove('hidden');
 
-const percentage = Math.round((score / questions.length) * 100);
+  const percentage = Math.round((score / questions.length) * 100);
+  const incorrectAnswers = questions.length - score;
 
-// Update results display
-document.getElementById('finalScore').textContent = `${score}/${questions.length} (${percentage}%)`;
+  // Update results display with enhanced statistics
+  document.getElementById('finalScore').textContent = `${score}/${questions.length}`;
+  document.getElementById('percentageScore').textContent = `${percentage}%`;
+  document.getElementById('correctCount').textContent = score;
+  document.getElementById('incorrectCount').textContent = incorrectAnswers;
+  document.getElementById('totalQuestions').textContent = questions.length;
 
-// Customize message based on performance
-let message = '';
-if (percentage >= 90) {
-  message = 'Excellent! You have mastered this topic!';
-} else if (percentage >= 70) {
-  message = 'Great job! You have a good understanding of this topic.';
-} else if (percentage >= 50) {
-  message = 'Not bad! There\'s room for improvement. Try again!';
-} else {
-  message = 'Keep practicing! You\'ll improve with more study.';
-}
+  // Customize message and performance badge based on performance - ENHANCED STYLING
+  let message = '';
+  let performanceLevel = '';
+  let badgeClass = '';
 
-document.getElementById('scoreMessage').textContent = message;
+  if (percentage >= 90) {
+      message = 'Outstanding! You have mastered this topic!';
+      performanceLevel = 'Excellent';
+      badgeClass = 'performance-excellent';
+  } else if (percentage >= 70) {
+      message = 'Great job! You have a solid understanding of this topic.';
+      performanceLevel = 'Good';
+      badgeClass = 'performance-good';
+  } else if (percentage >= 50) {
+      message = 'Not bad! There\'s room for improvement. Keep practicing!';
+      performanceLevel = 'Fair';
+      badgeClass = 'performance-fair';
+  } else {
+      message = 'Keep studying! You\'ll improve with more practice.';
+      performanceLevel = 'Needs Improvement';
+      badgeClass = 'performance-needs-improvement';
+  }
 
-console.log(`Quiz complete! Score: ${score}/${questions.length} (${percentage}%)`);
+  document.getElementById('scoreMessage').textContent = message;
+  document.getElementById('performanceLevel').textContent = performanceLevel;
+
+  // Apply performance badge styling
+  const performanceBadge = document.getElementById('performanceBadge');
+  if (performanceBadge) {
+      // Remove any existing performance classes
+      performanceBadge.className = 'performance-badge';
+      // Add the appropriate class
+      performanceBadge.classList.add(badgeClass);
+  }
+
+  // Update topic name in results
+  const topicDisplayName = selectedTopic.charAt(0).toUpperCase() + selectedTopic.slice(1).replace('_', ' ');
+  document.getElementById('completedTopic').textContent = topicDisplayName;
+
+  console.log(`Quiz complete! Score: ${score}/${questions.length} (${percentage}%)`);
 }
 
 // Results screen event handlers - these need to be added after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-// Retake quiz button
-const retakeBtn = document.getElementById('retakeQuiz');
-if (retakeBtn) {
-  retakeBtn.addEventListener('click', () => {
-    resetQuiz();
-    startQuiz();
-  });
-}
+  // Add home button functionality
+  addHomeButton();
 
-// Select new topic button
-const selectNewBtn = document.getElementById('selectNewTopic');
-if (selectNewBtn) {
-  selectNewBtn.addEventListener('click', () => {
-    resultScreen.classList.add('hidden');
-    document.getElementById('quizSelection').classList.remove('hidden');
-    resetQuiz();
-  });
-}
+  // Retake quiz button
+  const retakeBtn = document.getElementById('retakeQuiz');
+  if (retakeBtn) {
+      retakeBtn.addEventListener('click', () => {
+          resetQuiz();
+          startQuiz();
+      });
+  }
+
+  // Select new topic button
+  const selectNewBtn = document.getElementById('selectNewTopic');
+  if (selectNewBtn) {
+      selectNewBtn.addEventListener('click', () => {
+          resultScreen.classList.add('hidden');
+          document.getElementById('quizSelection').classList.remove('hidden');
+          resetQuiz();
+      });
+  }
 });
