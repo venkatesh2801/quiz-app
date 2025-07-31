@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzies</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/additional_styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ribeye&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
 <body>
     <header>
         <nav class="nav-bar">
             <h1 class="ribeye-regular" id="nav-heading">QUIZZIES</h1>
             <div class="nav-bar-links">
-                <p id="startLearning">Start Learing</p>
+                <p id="startLearning">Start Learning</p>
                 <p id="howItWorks">How it works?</p>
                 <p id="contactUs">Contact Us</p>   
                 <button id="loginSignup">Login/Signup</button>
@@ -101,7 +102,7 @@
                 </div>
                 <div class="image-card" data-topic="social">
                     <img src="./assets/social-quiz-card.avif" alt="social-quiz-card">
-                    <div class="img-text">Social</div>
+                    <div class="img-text">Social Studies</div>
                 </div>
                 <div class="image-card" data-topic="reading">
                     <img src="./assets/reading-quiz-card.avif" alt="reading-quiz-card">
@@ -117,7 +118,7 @@
             <div class="footer-container" id="footer-container">
               <div class="footer-content">
                 <h1 class="ribeye-regular" id="footer-heading">Quizzies</h1>
-                
+
                 <div class="footer-right-section">
                   <div class="footer-links-group">
                     <div class="footer-links-1">
@@ -133,7 +134,7 @@
                       <p>Terms of Service</p>
                     </div>
                   </div>
-                  
+
                   <div class="social-media-container">
                     <ul class="social-media-list">
                       <li>
@@ -180,7 +181,7 @@
         </footer>
     </section>
 
-    
+
     <section id="questionScreen" class="hidden">
       <div class="quiz-container">
         <div class="quiz-header">
@@ -192,9 +193,24 @@
         <button id="nextBtn" disabled>Next Question</button>
       </div>
     </section>
-    <section id="resultScreen">
 
+    <!-- Results Screen Section -->
+    <section id="resultScreen" class="hidden">
+      <div class="quiz-container">
+        <div class="results-content">
+          <h1 id="resultsTitle">Quiz Complete!</h1>
+          <div class="score-display">
+            <h2 id="finalScore"></h2>
+            <p id="scoreMessage"></p>
+          </div>
+          <div class="results-actions">
+            <button id="retakeQuiz" class="result-btn">Retake Quiz</button>
+            <button id="selectNewTopic" class="result-btn">Choose New Topic</button>
+          </div>
+        </div>
+      </div>
     </section>
+
     <div id="authModal" class="modal hidden">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -209,7 +225,7 @@
 
                 <div class="switch-row">
                   <span class="montserrat">Don't have an account?</span>
-                  <button id="showSignup" class="modalcd-btn-secondary montserrat" type="button">Sign up</button>
+                  <button id="showSignup" class="modal-btn-secondary montserrat" type="button">Sign up</button>
                 </div>
             </div>
 
@@ -227,7 +243,7 @@
         </div>
 
     </div>
-    
+
   <script src="./script/script.js"></script>
 </body>
 </html>
