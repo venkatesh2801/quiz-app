@@ -68,12 +68,118 @@ const timerText = document.getElementById('timer');
 
 document.querySelectorAll('.image-card').forEach(card =>{
   card.addEventListener('click',async() => {
-    selectedTopic = card.dataset.topic;
-
-    const response = await fetch('./questions.json');
-    const data = await resoponse.json();
-    questions = data[selectedTopic];
-
-    startQuiz();
+    try {
+      selectedTopic = card.dataset.topic;
+      const response = await fetch('./questions.json');
+      if (!response.ok) throw new Error("Network response was not ok");
+      const data = await response.json();
+      questions = data[selectedTopic] || [];
+      
+      if (questions.length === 0) {
+        throw new Error("No questions found for this topic");
+      }
+      
+      startQuiz();
+    } catch (error) {
+      console.error("Quiz loading error:", error);
+      alert("Failed to load the quiz. Please try again later.");
+    }
   });
 });
+
+
+//2. Quiz control functions
+
+function startQuiz(){
+  document.getElementById('quizSelection').classList.add('hidden');
+  questionScreen.classList.remove('hidden');
+  showQuestion();
+}
+
+function showQuestion(){
+  clearInterval(timer);
+  timeLeft=30;
+  nextBtn.disabled = true;
+
+  const currentQuestion = questions[currentQuestionIndex];
+  questionText.textContent = currentQuestion.question;
+  progressText.textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
+
+  optionsContainer.innerHTML = '';
+  currentQuestion.options.forEach((option,index) => {
+    const li = document.createElement('li');
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.classList.add('option-btn');
+    button.dataset.index = index;
+    li.appendChild(button);
+    optionsContainer.appendChild(li);
+
+    button.addEventListener('click', selectAnswer);
+  });
+
+  startTimer();
+
+
+}
+
+function startTimer(){
+  timerText.textContent = `${timeLeft}s`;
+  timer = setInterval(() =>{
+    timeLeft--;
+    timerText.textContent = `${timeLeft}s`;
+
+    if (timeLeft<=0){
+      clearInterval(timer);
+      handleTimeout();
+
+    }
+  },1000);
+}
+
+function selectAnswer(e){
+  clearInterval(timer);
+  const selectedButton = e.target;
+  const selectedIndex = parseInt(selectedButton.dataset.index);
+
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.classList.remove('selected');
+  });
+  selectedButton.classList.add('selected');
+
+  nextBtn.disabled=false;
+
+  const currentQuestion = questions[currentQuestionIndex];
+  if (selectedIndex === currentQuestion.answer) {
+    score++;
+    selectedButton.style.borderColor = '#4CAF50'; // Green for correct
+  } else {
+    selectedButton.style.borderColor = '#F44336'; // Red for wrong
+    // Highlight correct answer
+    document.querySelector(`.option-btn[data-index="${currentQuestion.answer}"]`)
+      .style.borderColor = '#4CAF50';
+  }
+}
+
+function handleTimeout(){
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.disabled = true;
+
+  });
+  nextBtn.disabled = false;
+}
+
+nextBtn.addEventListener('click', () => {
+  currentQuestionIndex++;
+
+  if(currentQuestionIndex < questions.length){
+    showQuestion();
+  }else{
+    showResults();
+  }
+});
+
+function showResults(){
+  questionScreen.classList.add('hidden');
+  console.log(`Quiz complete! Score:${score}/${questions.length}`);
+}
