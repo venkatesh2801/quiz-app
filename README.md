@@ -17,7 +17,7 @@ An elegant, browser-based quiz application that challenges users with multiple-c
 
 ## Description
 
-The Interactive Quiz App is a dynamic frontend application that allows users to:
+Quizzies is a dynamic frontend application that allows users to:
 - Select topics
 - Answer timed questions
 - Track their score and progress
@@ -74,7 +74,6 @@ quiz-app/
 ├── css/
 │   └── styles.css
 ├── js/
-
 │   └── script.js
 ├── questions.json
 ├── index.html
@@ -83,24 +82,21 @@ quiz-app/
 ```
 
 ## Screenshots
-<img width="1900" height="988" alt="Screenshot 2025-08-02 203748" src="https://github.com/user-attachments/assets/11c82499-cc5b-48b9-82f0-f2158ed4c7e1" />
-<img width="1900" height="988" alt="Screenshot 2025-08-02 203748" src="https://github.com/user-attachments/assets/d83cd9ed-8c60-4019-bda2-b2e69632033e" />
 
 ### Homepage
-![Homepage](path/to/screenshot-home.png)
+![Homepage](<img width="1900" height="988" alt="Screenshot 2025-08-02 203748" src="https://github.com/user-attachments/assets/11c82499-cc5b-48b9-82f0-f2158ed4c7e1" />)
 
 ### Topic Selection
-![Topic Selection](path/to/screenshot-topics.png)
+![Topic Selection](<img width="1920" height="1140" alt="Screenshot 2025-08-02 203822" src="https://github.com/user-attachments/assets/bcd97c5a-8adf-4dde-b718-cfb8c0de1253" />
+)
 
 ### Quiz Interface
-![Quiz Interface](path/to/screenshot-quiz.png)
+![Quiz Interface](<img width="1902" height="981" alt="Screenshot 2025-08-02 203937" src="https://github.com/user-attachments/assets/6c48268a-119d-48d5-a291-c1de3a67a0fd" />
+)
 
 ### Results Page
-![Results Page](path/to/screenshot-results.png)
-
-### Review Section
-![Review Section](path/to/screenshot-reviews.png)
-
+![Results Page](<img width="1898" height="974" alt="Screenshot 2025-08-02 204005" src="https://github.com/user-attachments/assets/02b89f69-e644-4316-b1d1-d45e2661d349" />
+)
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -114,12 +110,6 @@ Contributions are welcome! Please follow these steps:
 ## License
 
 This project is licensed under the MIT License.
-
-## Acknowledgements
-
-- OpenAI's ChatGPT — for logic and code structuring help
-- RandomUser API — used for testimonial avatars
-- Netlify — for deployment
 
 ## Live Demo
 
