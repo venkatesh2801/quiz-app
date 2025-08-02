@@ -84,19 +84,18 @@ quiz-app/
 ## Screenshots
 
 ### Homepage
-![Homepage]()
+![Homepage](https://github.com/user-attachments/assets/dfa8e1ca-5625-46d7-8c91-2f328a458258)
 
 ### Topic Selection
-![Topic Selection](<img width="1920" height="1140" alt="Screenshot 2025-08-02 203822" src="https://github.com/user-attachments/assets/bcd97c5a-8adf-4dde-b718-cfb8c0de1253" />
-)
+![Topic Selection](https://github.com/user-attachments/assets/4d0593ec-3def-49be-ad3c-6af8884ae600)
 
 ### Quiz Interface
-![Quiz Interface](<img width="1902" height="981" alt="Screenshot 2025-08-02 203937" src="https://github.com/user-attachments/assets/6c48268a-119d-48d5-a291-c1de3a67a0fd" />
-)
+![Quiz Interface](https://github.com/user-attachments/assets/13cc0b98-d4f0-4215-b67b-c754a4c5d42b)
 
 ### Results Page
-![Results Page](<img width="1898" height="974" alt="Screenshot 2025-08-02 204005" src="https://github.com/user-attachments/assets/02b89f69-e644-4316-b1d1-d45e2661d349" />
-)
+![Results Page](https://github.com/user-attachments/assets/57f172ae-9524-4bb7-a70e-0983fcc7dc88)
+
+
 ## Contributing
 
 Contributions are welcome! Please follow these steps:
