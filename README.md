@@ -112,4 +112,7 @@ This project is licensed under the MIT License.
 
 ## Live Demo
 
-[Add your Netlify or GitHub Pages live link here]([https://your-live-link.netlify.app](https://venkatesh2801.github.io/quiz-app/))
+## Live Demo
+
+[Click here to view the quiz app](https://venkatesh2801.github.io/quiz-app/)
+
