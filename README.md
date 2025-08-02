@@ -84,7 +84,7 @@ quiz-app/
 ## Screenshots
 
 ### Homepage
-![Homepage](<img width="1900" height="988" alt="Screenshot 2025-08-02 203748" src="https://github.com/user-attachments/assets/11c82499-cc5b-48b9-82f0-f2158ed4c7e1" />)
+![Homepage]()
 
 ### Topic Selection
 ![Topic Selection](<img width="1920" height="1140" alt="Screenshot 2025-08-02 203822" src="https://github.com/user-attachments/assets/bcd97c5a-8adf-4dde-b718-cfb8c0de1253" />
