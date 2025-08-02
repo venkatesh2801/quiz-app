@@ -491,9 +491,22 @@ body{
   padding: 80px 20px;
   text-align: center;
   position: relative;
-  z-index: 1;
   
 }
+.carousel-nav-buttons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: -50px; /* pulls buttons closer to cards */
+}
+
+.carousel-nav-buttons .spacer {
+  flex-grow: 1;
+}
+
 
 .section-title {
   color: #4B164C;
@@ -604,12 +617,13 @@ body{
   background: #7E60BF;
   color: white;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem;
   transition: all 0.3s;
+  box-shadow: 0 5px 15px rgba(126, 96, 191, 0.3);
 }
 
 .review-prev:hover, .review-next:hover {
@@ -617,8 +631,7 @@ body{
 }
 
 .review-dots {
-  display: flex;
-  gap: 10px;
+  display: none;
 }
 
 .review-dot {

@@ -64,141 +64,66 @@ document.getElementById("homeBtn").addEventListener("click", function() {
   document.getElementById('quizSelection').classList.remove('hidden');
   document.getElementById('welcomeScreen').scrollIntoView({ behavior: "smooth" });
 });
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   const reviewsContainer = document.querySelector('.reviews-container');
-  const reviewCards = document.querySelectorAll('.review-card');
   const prevBtn = document.querySelector('.review-prev');
   const nextBtn = document.querySelector('.review-next');
-  const dotsContainer = document.querySelector('.review-dots');
-  
   let isDragging = false;
-  let startX;
-  let scrollLeft;
-  let currentIndex = 0;
-  let cardWidth = reviewCards[0].offsetWidth + 30; // width + gap
+  let startX, scrollLeft;
 
-  // Create dots
-  function createDots() {
-    dotsContainer.innerHTML = '';
-    reviewCards.forEach((_, index) => {
-      const dot = document.createElement('span');
-      dot.classList.add('review-dot');
-      if (index === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        goToReview(index);
-      });
-      dotsContainer.appendChild(dot);
-    });
-  }
-  
-  createDots();
-  const dots = document.querySelectorAll('.review-dot');
+  const scrollAmount = 450;
 
-  // Update active dot
-  function updateDots() {
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
-    });
-  }
+  prevBtn.addEventListener('click', () => {
+    reviewsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
 
-  // Navigation functions
-  function goToReview(index) {
-    currentIndex = Math.max(0, Math.min(index, reviewCards.length - 1));
-    reviewsContainer.scrollTo({
-      left: currentIndex * cardWidth,
-      behavior: 'smooth'
-    });
-    updateDots();
-  }
+  nextBtn.addEventListener('click', () => {
+    reviewsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
 
-  // Handle scroll events to update current index
-  function handleScroll() {
-    if (isDragging) return;
-    
-    const scrollPosition = reviewsContainer.scrollLeft;
-    currentIndex = Math.round(scrollPosition / cardWidth);
-    updateDots();
-  }
-
-  // Mouse drag events
+  // Dragging logic
   reviewsContainer.addEventListener('mousedown', (e) => {
     isDragging = true;
-    reviewsContainer.classList.add('dragging');
     startX = e.pageX - reviewsContainer.offsetLeft;
     scrollLeft = reviewsContainer.scrollLeft;
+    reviewsContainer.classList.add('dragging');
+  });
+
+  reviewsContainer.addEventListener('mouseleave', () => {
+    isDragging = true;
+    reviewsContainer.classList.remove('dragging');
+  });
+
+  reviewsContainer.addEventListener('mouseup', () => {
+    isDragging = true;
+    reviewsContainer.classList.remove('dragging');
   });
 
   reviewsContainer.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-    e.preventDefault();
     const x = e.pageX - reviewsContainer.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed
+    const walk = (x - startX) * 1.5;
     reviewsContainer.scrollLeft = scrollLeft - walk;
-    
-    // Update index during drag
-    const scrollPosition = reviewsContainer.scrollLeft;
-    currentIndex = Math.round(scrollPosition / cardWidth);
-    updateDots();
   });
 
-  reviewsContainer.addEventListener('mouseup', () => {
-    isDragging = false;
-    reviewsContainer.classList.remove('dragging');
-    // Snap to nearest card
-    goToReview(currentIndex);
-  });
-
-  reviewsContainer.addEventListener('mouseleave', () => {
-    if (isDragging) {
-      isDragging = false;
-      reviewsContainer.classList.remove('dragging');
-      goToReview(currentIndex);
-    }
-  });
-
-  // Touch events
   reviewsContainer.addEventListener('touchstart', (e) => {
     isDragging = true;
-    reviewsContainer.classList.add('dragging');
     startX = e.touches[0].pageX - reviewsContainer.offsetLeft;
     scrollLeft = reviewsContainer.scrollLeft;
+  });
+
+  reviewsContainer.addEventListener('touchend', () => {
+    isDragging = false;
   });
 
   reviewsContainer.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
     const x = e.touches[0].pageX - reviewsContainer.offsetLeft;
-    const walk = (x - startX) * 2;
+    const walk = (x - startX) * 1.5;
     reviewsContainer.scrollLeft = scrollLeft - walk;
-    
-    const scrollPosition = reviewsContainer.scrollLeft;
-    currentIndex = Math.round(scrollPosition / cardWidth);
-    updateDots();
-  });
-
-  reviewsContainer.addEventListener('touchend', () => {
-    isDragging = false;
-    reviewsContainer.classList.remove('dragging');
-    goToReview(currentIndex);
-  });
-
-  // Scroll event listener
-  reviewsContainer.addEventListener('scroll', handleScroll);
-
-  // Button click handlers
-  prevBtn.addEventListener('click', () => {
-    goToReview(currentIndex - 1);
-  });
-
-  nextBtn.addEventListener('click', () => {
-    goToReview(currentIndex + 1);
-  });
-
-  // Recalculate card width on resize
-  window.addEventListener('resize', () => {
-    cardWidth = reviewCards[0].offsetWidth + 30;
-    goToReview(currentIndex); // Re-center current card
   });
 });
+
 
 // Add this to your script.js or before the carousel code
 const reviewsData = [
@@ -386,11 +311,12 @@ card.addEventListener('click', async() => {
     resetQuiz(); 
     startQuiz();
 
-  } catch (error) {
+  } 
+  catch (error) {
     console.error("Quiz loading error:", error);
     alert(`Failed to load the ${selectedTopic} quiz. Please check if the questions.json file is available and try again.`);
   }
-});
+  });
 });
 
 
