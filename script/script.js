@@ -1,7 +1,7 @@
 document.getElementById("signup-btn").addEventListener("click",function(){
-  document.getElementById("authModal").style.display = "flex";
-  document.getElementById("signupForm").classList.add("hidden");
-  document.getElementById("loginForm").classList.remove("hidden");
+  document.getElementById("authModal").classList.remove("hidden");
+  document.getElementById("signupForm").classList.remove("hidden");
+  document.getElementById("loginForm").classList.add("hidden");
 });
 
 document.getElementById("nav-heading").addEventListener("click",function(){
@@ -9,7 +9,7 @@ document.getElementById("welcomeScreen").scrollIntoView({ behavior: "smooth" });
 });
 
 document.querySelector(".close").addEventListener("click",function(){
-  document.getElementById("authModal").style.display = "none";
+  document.getElementById("authModal").classList.add("hidden");
 });
 
 document.getElementById("signup-btn-main").addEventListener("click",function(){
@@ -27,11 +27,11 @@ document.getElementById("loginForm").classList.remove("hidden");
 });
 
 document.getElementById("loginSubmit").addEventListener("click",function(){
-document.getElementById("authModal").style.display="none";
+document.getElementById("authModal").classList.add("hidden");
 })
 
 document.getElementById("signupSubmit").addEventListener("click",function(){
-document.getElementById("authModal").style.display="none";
+document.getElementById("authModal").classList.add("hidden");
 })
 
 document.getElementById("startLearning").addEventListener("click", function() {
@@ -47,14 +47,153 @@ document.getElementById("footer-container").scrollIntoView({ behavior: "smooth" 
 });
 
 document.getElementById("loginSignup").addEventListener("click", function() {
-document.getElementById("authModal").style.display = "flex";
+document.getElementById("authModal").classList.remove("hidden");
+document.getElementById("loginForm").classList.remove("hidden");
+document.getElementById("signupForm").classList.add("hidden");
 });
 
 document.getElementById("footer-heading").addEventListener("click",function(){
 document.getElementById("welcomeScreen").scrollIntoView({ behavior: "smooth" });
 })
 
-// Quiz variables
+document.getElementById("homeBtn").addEventListener("click", function() {
+  // Reset quiz state
+  resetQuiz();
+  // Hide question screen and show welcome screen
+  document.getElementById('questionScreen').classList.add('hidden');
+  document.getElementById('quizSelection').classList.remove('hidden');
+  document.getElementById('welcomeScreen').scrollIntoView({ behavior: "smooth" });
+});
+// Add this to your script.js or before the carousel code
+const reviewsData = [
+  {
+    text: "This quiz platform helped me improve my knowledge significantly. The questions are well-structured and challenging!",
+    name: "Sarah Johnson",
+    title: "Student",
+    avatar: "https://randomuser.me/api/portraits/women/43.jpg"
+  },
+  {
+    text: "I use this daily with my students. It's an excellent tool for reinforcing concepts in a fun way.",
+    name: "Michael Chen",
+    title: "Teacher",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg"
+  },
+  {
+    text: "As a lifelong learner, I appreciate the variety of topics available. The explanations are very helpful!",
+    name: "Emma Rodriguez",
+    title: "Researcher",
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg"
+  },
+  {
+    text: "The interface is clean and intuitive. I love how I can track my progress over time.",
+    name: "David Kim",
+    title: "Software Developer",
+    avatar: "https://randomuser.me/api/portraits/men/22.jpg"
+  }
+];
+
+// Function to generate reviews
+function generateReviews() {
+  const container = document.querySelector('.reviews-container');
+  container.innerHTML = ''; // Clear existing
+  
+  reviewsData.forEach(review => {
+    const card = document.createElement('div');
+    card.className = 'review-card';
+    card.innerHTML = `
+      <div class="review-content">
+        <p class="review-text">"${review.text}"</p>
+        <div class="review-author">
+          <img src="${review.avatar}" alt="${review.name}" class="author-avatar">
+          <div class="author-info">
+            <h4 class="author-name">${review.name}</h4>
+            <p class="author-title">${review.title}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Call this when page loads
+document.addEventListener('DOMContentLoaded', generateReviews);
+
+
+// Modify the showQuestion function to update button text
+function showQuestion() {
+  clearInterval(timer);
+  timeLeft = 30;
+  nextBtn.disabled = true;
+
+  // Update next button text based on question index
+  if (currentQuestionIndex === questions.length - 1) {
+    nextBtn.textContent = "Show Results";
+  } else {
+    nextBtn.textContent = "Next Question";
+  }
+
+  // ... rest of the existing showQuestion function ...
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const reviewsContainer = document.querySelector('.reviews-container');
+  const reviewCards = document.querySelectorAll('.review-card');
+  const prevBtn = document.querySelector('.review-prev');
+  const nextBtn = document.querySelector('.review-next');
+  const dotsContainer = document.querySelector('.review-dots');
+  
+  let currentIndex = 0;
+  
+  // Create dots
+  reviewCards.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.classList.add('review-dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => {
+      goToReview(index);
+    });
+    dotsContainer.appendChild(dot);
+  });
+  
+  const dots = document.querySelectorAll('.review-dot');
+  
+  // Navigation functions
+  function goToReview(index) {
+    currentIndex = index;
+    updateReview();
+  }
+  
+  function updateReview() {
+    reviewsContainer.scrollTo({
+      left: reviewCards[currentIndex].offsetLeft - reviewsContainer.offsetLeft,
+      behavior: 'smooth'
+    });
+    
+    // Update active dot
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+  
+  // Button click handlers
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + reviewCards.length) % reviewCards.length;
+    updateReview();
+  });
+  
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % reviewCards.length;
+    updateReview();
+  });
+  
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % reviewCards.length;
+    updateReview();
+  }, 5000);
+});
+
+
 let currentQuestionIndex = 0;
 let score = 0;
 let timer;
@@ -62,7 +201,7 @@ let timeLeft = 30;
 let selectedTopic = '';
 let questions = [];
 
-// DOM elements
+
 const questionScreen = document.getElementById('questionScreen');
 const questionText = document.getElementById('questionText');
 const optionsContainer = document.getElementById('optionsContainer');
@@ -71,7 +210,7 @@ const progressText = document.getElementById('progress');
 const timerText = document.getElementById('timer');
 const resultScreen = document.getElementById('resultScreen');
 
-// Quiz topic selection
+
 document.querySelectorAll('.image-card').forEach(card => {
 card.addEventListener('click', async() => {
   try {
@@ -89,7 +228,7 @@ card.addEventListener('click', async() => {
       throw new Error(`No questions found for topic: ${selectedTopic}`);
     }
 
-    resetQuiz(); // Reset quiz state before starting
+    resetQuiz(); 
     startQuiz();
 
   } catch (error) {
@@ -99,7 +238,7 @@ card.addEventListener('click', async() => {
 });
 });
 
-// Quiz control functions
+
 function resetQuiz() {
 currentQuestionIndex = 0;
 score = 0;
@@ -108,7 +247,7 @@ timeLeft = 30;
 }
 
 function startQuiz() {
-// Hide other screens and show question screen
+
 document.getElementById('quizSelection').classList.add('hidden');
 resultScreen.classList.add('hidden');
 questionScreen.classList.remove('hidden');
@@ -121,7 +260,7 @@ clearInterval(timer);
 timeLeft = 30;
 nextBtn.disabled = true;
 
-// Reset button styles
+
 document.querySelectorAll('.option-btn').forEach(btn => {
   btn.style.borderColor = '';
   btn.disabled = false;
@@ -132,7 +271,7 @@ const currentQuestion = questions[currentQuestionIndex];
 questionText.textContent = currentQuestion.question;
 progressText.textContent = `Question ${currentQuestionIndex + 1}/${questions.length}`;
 
-// Clear and populate options
+
 optionsContainer.innerHTML = '';
 currentQuestion.options.forEach((option, index) => {
   const li = document.createElement('li');
@@ -168,7 +307,7 @@ const selectedButton = e.target;
 const selectedIndex = parseInt(selectedButton.dataset.index);
 const currentQuestion = questions[currentQuestionIndex];
 
-// Disable all buttons to prevent multiple selections
+
 document.querySelectorAll('.option-btn').forEach(btn => {
   btn.disabled = true;
   btn.classList.remove('selected');
@@ -177,25 +316,25 @@ document.querySelectorAll('.option-btn').forEach(btn => {
 selectedButton.classList.add('selected');
 nextBtn.disabled = false;
 
-// Check if answer is correct and provide visual feedback
+
 if (selectedIndex === currentQuestion.answer) {
   score++;
-  selectedButton.style.borderColor = '#4CAF50'; // Green for correct
-  selectedButton.style.backgroundColor = '#E8F5E8'; // Light green background
+  selectedButton.style.borderColor = '#4CAF50'; 
+  selectedButton.style.backgroundColor = '#E8F5E8'; 
 } else {
-  selectedButton.style.borderColor = '#F44336'; // Red for wrong
-  selectedButton.style.backgroundColor = '#FFEBEE'; // Light red background
+  selectedButton.style.borderColor = '#F44336';
+  selectedButton.style.backgroundColor = '#FFEBEE'; 
 
-  // Highlight correct answer
+
   const correctButton = document.querySelector(`.option-btn[data-index="${currentQuestion.answer}"]`);
   correctButton.style.borderColor = '#4CAF50';
   correctButton.style.backgroundColor = '#E8F5E8';
 }
 
-// Show explanation if available
+
 if (currentQuestion.explanation) {
   setTimeout(() => {
-    // You could add an explanation display here if desired
+    
   }, 1000);
 }
 }
@@ -203,23 +342,23 @@ if (currentQuestion.explanation) {
 function handleTimeout() {
 const currentQuestion = questions[currentQuestionIndex];
 
-// Disable all buttons and show correct answer
+
 document.querySelectorAll('.option-btn').forEach(btn => {
   btn.disabled = true;
 });
 
-// Highlight correct answer in green
+
 const correctButton = document.querySelector(`.option-btn[data-index="${currentQuestion.answer}"]`);
 correctButton.style.borderColor = '#4CAF50';
 correctButton.style.backgroundColor = '#E8F5E8';
 
 nextBtn.disabled = false;
 
-// You could show a timeout message here
+
 console.log("Time's up! The correct answer was:", currentQuestion.options[currentQuestion.answer]);
 }
 
-// Next button click handler
+
 nextBtn.addEventListener('click', () => {
 currentQuestionIndex++;
 
@@ -236,10 +375,10 @@ resultScreen.classList.remove('hidden');
 
 const percentage = Math.round((score / questions.length) * 100);
 
-// Update results display
+
 document.getElementById('finalScore').textContent = `${score}/${questions.length} (${percentage}%)`;
 
-// Customize message based on performance
+
 let message = '';
 if (percentage >= 90) {
   message = 'Excellent! You have mastered this topic!';
@@ -256,9 +395,9 @@ document.getElementById('scoreMessage').textContent = message;
 console.log(`Quiz complete! Score: ${score}/${questions.length} (${percentage}%)`);
 }
 
-// Results screen event handlers - these need to be added after DOM is loaded
+
 document.addEventListener('DOMContentLoaded', function() {
-// Retake quiz button
+
 const retakeBtn = document.getElementById('retakeQuiz');
 if (retakeBtn) {
   retakeBtn.addEventListener('click', () => {
@@ -267,7 +406,6 @@ if (retakeBtn) {
   });
 }
 
-// Select new topic button
 const selectNewBtn = document.getElementById('selectNewTopic');
 if (selectNewBtn) {
   selectNewBtn.addEventListener('click', () => {
