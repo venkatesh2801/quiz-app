@@ -64,6 +64,142 @@ document.getElementById("homeBtn").addEventListener("click", function() {
   document.getElementById('quizSelection').classList.remove('hidden');
   document.getElementById('welcomeScreen').scrollIntoView({ behavior: "smooth" });
 });
+document.addEventListener('DOMContentLoaded', function() {
+  const reviewsContainer = document.querySelector('.reviews-container');
+  const reviewCards = document.querySelectorAll('.review-card');
+  const prevBtn = document.querySelector('.review-prev');
+  const nextBtn = document.querySelector('.review-next');
+  const dotsContainer = document.querySelector('.review-dots');
+  
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+  let currentIndex = 0;
+  let cardWidth = reviewCards[0].offsetWidth + 30; // width + gap
+
+  // Create dots
+  function createDots() {
+    dotsContainer.innerHTML = '';
+    reviewCards.forEach((_, index) => {
+      const dot = document.createElement('span');
+      dot.classList.add('review-dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        goToReview(index);
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+  
+  createDots();
+  const dots = document.querySelectorAll('.review-dot');
+
+  // Update active dot
+  function updateDots() {
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentIndex);
+    });
+  }
+
+  // Navigation functions
+  function goToReview(index) {
+    currentIndex = Math.max(0, Math.min(index, reviewCards.length - 1));
+    reviewsContainer.scrollTo({
+      left: currentIndex * cardWidth,
+      behavior: 'smooth'
+    });
+    updateDots();
+  }
+
+  // Handle scroll events to update current index
+  function handleScroll() {
+    if (isDragging) return;
+    
+    const scrollPosition = reviewsContainer.scrollLeft;
+    currentIndex = Math.round(scrollPosition / cardWidth);
+    updateDots();
+  }
+
+  // Mouse drag events
+  reviewsContainer.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    reviewsContainer.classList.add('dragging');
+    startX = e.pageX - reviewsContainer.offsetLeft;
+    scrollLeft = reviewsContainer.scrollLeft;
+  });
+
+  reviewsContainer.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - reviewsContainer.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed
+    reviewsContainer.scrollLeft = scrollLeft - walk;
+    
+    // Update index during drag
+    const scrollPosition = reviewsContainer.scrollLeft;
+    currentIndex = Math.round(scrollPosition / cardWidth);
+    updateDots();
+  });
+
+  reviewsContainer.addEventListener('mouseup', () => {
+    isDragging = false;
+    reviewsContainer.classList.remove('dragging');
+    // Snap to nearest card
+    goToReview(currentIndex);
+  });
+
+  reviewsContainer.addEventListener('mouseleave', () => {
+    if (isDragging) {
+      isDragging = false;
+      reviewsContainer.classList.remove('dragging');
+      goToReview(currentIndex);
+    }
+  });
+
+  // Touch events
+  reviewsContainer.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    reviewsContainer.classList.add('dragging');
+    startX = e.touches[0].pageX - reviewsContainer.offsetLeft;
+    scrollLeft = reviewsContainer.scrollLeft;
+  });
+
+  reviewsContainer.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX - reviewsContainer.offsetLeft;
+    const walk = (x - startX) * 2;
+    reviewsContainer.scrollLeft = scrollLeft - walk;
+    
+    const scrollPosition = reviewsContainer.scrollLeft;
+    currentIndex = Math.round(scrollPosition / cardWidth);
+    updateDots();
+  });
+
+  reviewsContainer.addEventListener('touchend', () => {
+    isDragging = false;
+    reviewsContainer.classList.remove('dragging');
+    goToReview(currentIndex);
+  });
+
+  // Scroll event listener
+  reviewsContainer.addEventListener('scroll', handleScroll);
+
+  // Button click handlers
+  prevBtn.addEventListener('click', () => {
+    goToReview(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    goToReview(currentIndex + 1);
+  });
+
+  // Recalculate card width on resize
+  window.addEventListener('resize', () => {
+    cardWidth = reviewCards[0].offsetWidth + 30;
+    goToReview(currentIndex); // Re-center current card
+  });
+});
+
 // Add this to your script.js or before the carousel code
 const reviewsData = [
   {
@@ -89,6 +225,30 @@ const reviewsData = [
     name: "David Kim",
     title: "Software Developer",
     avatar: "https://randomuser.me/api/portraits/men/22.jpg"
+  },
+  {
+    text: "The adaptive learning feature is incredible! It adjusts to my skill level and keeps me challenged without being overwhelming.",
+    name: "James Wilson",
+    title: "Marketing Manager",
+    avatar: "https://randomuser.me/api/portraits/men/45.jpg"
+  },
+  {
+    text: "I've recommended this to all my study group. The collaborative features make it perfect for team learning sessions.",
+    name: "Olivia Martinez",
+    title: "Medical Student",
+    avatar: "https://randomuser.me/api/portraits/women/28.jpg"
+  },
+  {
+    text: "As a busy professional, I love the bite-sized quizzes I can complete during my commute. Perfect for continuous learning!",
+    name: "Daniel Brown",
+    title: "Financial Analyst",
+    avatar: "https://randomuser.me/api/portraits/men/75.jpg"
+  },
+  {
+    text: "The detailed progress analytics helped me identify my weak areas and focus my study time more effectively.",
+    name: "Sophia Lee",
+    title: "Data Scientist",
+    avatar: "https://randomuser.me/api/portraits/women/82.jpg"
   }
 ];
 
@@ -186,11 +346,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateReview();
   });
   
-
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % reviewCards.length;
-    updateReview();
-  }, 5000);
 });
 
 

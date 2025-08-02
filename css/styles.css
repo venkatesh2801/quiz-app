@@ -487,51 +487,78 @@ body{
 }
 /* Reviews Section */
 .reviews-section {
-  background-color: #FFE1FF ;
-  padding: 60px 20px;
+  background: linear-gradient(to right, #fdf4ff, #f9e6ff, #fdf4ff);
+  padding: 80px 20px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  
 }
 
 .section-title {
   color: #4B164C;
   font-family: "Ribeye", serif;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
+  font-size: 2rem;
+  margin-bottom: 60px;
 }
 
 .reviews-container {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 20px;
-  padding: 20px 0;
-  max-width: 1200px;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1400px;
   margin: 0 auto;
   scrollbar-width: none; /* Hide scrollbar for Firefox */
+  cursor: grab;
+  user-select: none;
+  scroll-behavior: smooth;
 }
-
+.reviews-container.dragging {
+  scroll-behavior: auto;
+  cursor: grabbing;
+}
+.reviews-container:active {
+  cursor: grabbing;
+}
 .reviews-container::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
 .review-card {
-  min-width: 300px;
-  max-width: 400px;
+  min-width: 400px;
+  max-width: 500px;
   background: white;
-  border-radius: 16px;
-  padding: 30px;
-  box-shadow: 0 4px 20px rgba(126, 96, 191, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(126, 96, 191, 0.15);
   scroll-snap-align: center;
-  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 0 0 auto;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(126, 96, 191, 0.2); /* Lift effect on hover */
 }
 
 .review-text {
   color: #4B164C;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
   font-style: italic;
   text-align: left;
+}
+.review-controls {
+  margin-top: 50px;
+}
+
+.review-prev, .review-next {
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
 }
 
 .review-author {
@@ -541,8 +568,8 @@ body{
 }
 
 .author-avatar {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -552,12 +579,14 @@ body{
 }
 
 .author-name {
+  font-size: 1.3rem;
   color: #4B164C;
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
 }
 
 .author-title {
+  font-size: 1.3rem;
   color: #7E60BF;
   margin: 0;
   font-size: 0.9rem;
